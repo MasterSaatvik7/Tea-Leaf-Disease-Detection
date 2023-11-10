@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Leaves Animation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+	
+	table {
+        margin: 0 auto;
+    	}
+    
+        #grey-rectangle {
+            width: 1000px;
+            height: 600px;
+            background-color: rgba(204, 204, 204, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #writing-area {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #upload-container {
+            width: 10px;
+            height: 50px;
+            background-color: rgba(204, 204, 204, 0);
+            position: absolute;
+            top: 85%;
+            left: 5%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #upload-box {
+            margin-right: 10px;
+        }
+
+        input[type="file"] {
+            margin-right: 10px;
+        }
+
+        .prediction {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="grey-rectangle">
+        <div id="writing-area">
+            <!-- Add your content here --><h3><u>Convolutional Neural Network Based Tea Leaf Disease Detection</u></h3>
+            <div><br>This Web App helps the user identify the condition of their Tea Plants.
+            <br>The following 8 Leaf Health conditions can be classified using the CNN Model with an accuracy of <b>82%</b>.
+            <br><br>
+            <table>
+    <tr>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Healthy.jpg') }}" alt="Healthy Leaf" width="100" height="100"><br>
+            Healthy Leaf
+        </td>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Algal.jpg') }}" alt="Algal Leaf Disease" width="100" height="100"><br>
+            Algal Leaf Disease
+        </td>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Anthracnose.jpg') }}" alt="Anthracnose" width="100" height="100"><br>
+            Anthracnose
+        </td>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Bird Eye Spot.jpg') }}" alt="Bird Eye Spot" width="100" height="100"><br>
+            Bird Eye Spot
+        </td>     
+    </tr>
+    <tr>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Gray Blight.jpg') }}" alt="Gray Blight" width="100" height="100"><br>
+            Gray Blight
+        </td>        
+        <td rowspan="2" style="text-align: center;">
+            <img src="{{ url_for('static', filename='Red Leaf Spot.jpg') }}" alt="Red Leaf Spot" width="100" height="100"><br>
+            Red Leaf Spot
+        </td>
+        <td>
+            <img src="{{ url_for('static', filename='White Spot.jpg') }}" alt="White Spot" width="100" height="100"><br>
+            White Spot
+        </td>
+        <td style="text-align: center;">
+            <img src="{{ url_for('static', filename='Brown Blight.jpg') }}" alt="Brown Blight" width="100" height="100"><br>
+            Brown Blight
+        </td>
+    </tr>
+    
+</table>
+</div>
+        </div>
+        <div id="upload-container">
+            <div id="upload-box">
+                <form action="/predict" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" id="fileInput" accept=".jpg, .jpeg, .png">
+                    <input type="submit" value="Predict">
+                </form> 
+            </div>
+            <div class="prediction">Predicted class: {{ prediction }}</div>
+        </div>
+    </div>
+
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
