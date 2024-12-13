@@ -1,35 +1,66 @@
+Here is the professional version of your project README:
+
+---
+
 # Tea-Leaf-Disease-Detection
 
-This CNN model for Tea Leaf Disease Detection works in **Python 3.10.12**(since the model was developed in google colaboratory).
+This repository contains a Convolutional Neural Network (CNN) model for detecting tea leaf diseases. The model was developed in Python 3.10.12 and was initially implemented on Google Colaboratory. To avoid dimension errors, it is recommended to use Python 3.10.12 or higher.
 
-If any lower version of Python is used dimension erros will occur.
+The model is built with **TensorFlow 2.14.0**, which is compatible with the version available in Google Colaboratory.
 
-The Tensorflow version used is **tensorflow 2.14.0**(available in google colaboratory).
+## How to Run the Web Application
 
-**How to Run the website code:**
+1. Ensure that the following files and directories are in the same location:
+   - `static/` directory
+   - `templates/` directory
+   - `app.py`
+   - `CNN_Tea_Leaf_Disease_Detection.pkl` file
 
-Keep all the static directory, templates directory, app.py & CNN_Tea_Leaf_Disease_Detection.pkl file in same directory.
+2. Open a terminal in the directory containing the files and execute the following command:
 
-Open the directory in terminal and type the following command
+   ```bash
+   python3.10 app.py
+   ```
 
-  **python3.10 app.py**
+This will start the web application, which utilizes the trained CNN model for tea leaf disease detection.
 
-**Kaggle Dataset used for training: https://www.kaggle.com/datasets/shashwatwork/identifying-disease-in-tea-leafs**
+## Kaggle Dataset Used for Training
 
-**How to import Kaggle Dataset in Google Colab:**
+The model is trained on the dataset available on Kaggle:  
+[Identifying Disease in Tea Leafs](https://www.kaggle.com/datasets/shashwatwork/identifying-disease-in-tea-leafs)
 
-sign in to your kaggle account -> go to **"profile"** -> click on **"Account"** -> Under the heading **API** click on **"Create New Token**
+## How to Import Kaggle Dataset in Google Colab
 
-open Google Colab and upload your API token(json file) and type the following commands to import the Kaggle Data using the API
+1. Sign in to your Kaggle account.
+2. Navigate to **Profile** -> **Account**.
+3. Under the **API** section, click on **Create New Token** to generate a new API key.
 
-!pip install -q kaggle  #installs kaggle into google colab
+Once you have the API key:
 
-!mkdir ~/.kaggle  #making a kaggle directory
+1. Open Google Colab and upload the `kaggle.json` file (API token).
+2. Use the following commands to import the Kaggle dataset into Google Colab:
 
-!cp kaggle.json ~/.kaggle  #copying our API token into the kaggle directory
+   ```bash
+   !pip install -q kaggle  # Install the Kaggle API
+   !mkdir ~/.kaggle  # Create a directory for the Kaggle API token
+   !cp kaggle.json ~/.kaggle  # Copy the API token into the directory
+   !kaggle datasets download -d shashwatwork/identifying-disease-in-tea-leafs  # Download the dataset
+   ```
 
-!kaggle datasets download -d shashwatwork/identifying-disease-in-tea-leafs  #copy this command to pull kaggle data into colab
+### To Use Any Other Kaggle Dataset
 
-To use any othe dataset: Go to respective Datset in kaggle -> click on menu option( the 3 vertical dots) -> click on **"Copy API Command**
+1. Go to the respective dataset on Kaggle.
+2. Click on the menu (three vertical dots) and select **Copy API Command**.
+3. Use the following command to download the dataset:
 
-!unzip /content/identifying-disease-in-tea-leafs.zip  #unzip the kaggle data downloaded
+   ```bash
+   !kaggle datasets download -d <dataset-path>
+   ```
+
+4. After downloading, unzip the dataset using the following command:
+
+   ```bash
+   !unzip /content/<dataset-name>.zip
+   ```
+
+---
