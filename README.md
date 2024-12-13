@@ -1,5 +1,3 @@
-Here is the professional version of your project README:
-
 ---
 
 # Tea-Leaf-Disease-Detection
